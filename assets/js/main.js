@@ -62,11 +62,63 @@ var elementsLists = [
 	
 ];
 
-var html = "";
- for (var i = 0 ; i < elementsLists.length ; i++){
- 	var dato_1 = elementsLists[i];
-    var e = "<li>" +  dato_1.title + "</li>" + "</p>" + "</div>";
+// capturas de variables con DOM
 
- 	html += e;
- }
-document.getElementById('panel').innerHTML = html;
+
+//var listas = document.getElementById('listado');
+
+
+function Listarea(userId,id,title,completed)
+{
+	this.userId = userId;
+	this.id = id;
+	this.title = title;
+	this.completed = completed;
+}
+
+function AddLIsts()
+{
+    this.mostrarTarea = function(){
+    	var html = "";
+        for (var i = 0 ; i < elementsLists.length ; i++){
+		 	var dato_1 = elementsLists[i];
+		    var e = "<div>" + "<p>" + "<input type='checkbox' name='datos' id='"+ i + "' />" +
+		            "<label for='"+i+"'>" + dato_1.title + "</label>" + "</p>" + "<div>" ;
+
+		 	html +=  e;
+        }
+        document.getElementById('listado').innerHTML = html;
+        
+    }
+
+    this.AddTarea = function(addTarea){
+        elementsLists.push(addTarea);
+    }
+}
+
+var lista1 = new AddLIsts();
+
+
+var btnAdd = document.getElementById('add');
+btnAdd.onclick = function(){
+	var addTarea = document.getElementById("nuevaTarea").value;
+	var lista1.AddTarea(new elementsLists(addTarea));
+	
+	
+	
+};
+lista1.mostrarTarea();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
