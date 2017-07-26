@@ -59,7 +59,6 @@ var elementsLists = [
 	    "title": "illo est ratione doloremque quia maiores aut",
 	    "completed": true
 	  }
-	
 ];
 
 function Listarea(title)
@@ -72,7 +71,6 @@ function Listarea(title)
 
 function AddLIsts()
 {
-	
     this.mostrarTarea = function(){
     	var html = "";
         for (var i = 0 ; i < elementsLists.length ; i++){
@@ -91,17 +89,13 @@ function AddLIsts()
         }
         document.getElementById('listado').innerHTML = html;
     }
-
-     
-     
 }
 
-function eliminar (e) {
-	console.log (e);
+function eliminar (e) { 
 	elementsLists[ parseInt (e.id) ].completed = true;
-
 	lista1.mostrarTarea();
 }
+
 function limpiar()
 {
 	document.getElementById('nuevaTarea').value= "";
@@ -119,6 +113,5 @@ btnAdd.onclick = function(){
 	lista1.mostrarTarea();
     limpiar();
 };
-
  
 lista1.mostrarTarea();
