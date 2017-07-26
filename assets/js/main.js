@@ -62,18 +62,12 @@ var elementsLists = [
 	
 ];
 
-// capturas de variables con DOM
-
-
-//var listas = document.getElementById('listado');
-
-
-function Listarea(userId,id,title,completed)
+function Listarea(title)
 {
-	this.userId = userId;
-	this.id = id;
+	this.userId = 1;
+	this.id = (elementsLists.length + 1);
 	this.title = title;
-	this.completed = completed;
+	this.completed = false;
 }
 
 function AddLIsts()
@@ -90,10 +84,11 @@ function AddLIsts()
         document.getElementById('listado').innerHTML = html;
         
     }
+}
 
-    this.AddTarea = function(addTarea){
-        elementsLists.push(addTarea);
-    }
+function limpiar()
+{
+	document.getElementById('nuevaTarea').value= "";
 }
 
 var lista1 = new AddLIsts();
@@ -102,16 +97,13 @@ var lista1 = new AddLIsts();
 var btnAdd = document.getElementById('add');
 btnAdd.onclick = function(){
 	var addTarea = document.getElementById("nuevaTarea").value;
-	var lista1.AddTarea(new elementsLists(addTarea));
-	
-	
-	
+	var tarea1 = new Listarea(addTarea);
+	elementsLists.push(tarea1);
+	lista1.mostrarTarea();
+    limpiar();
 };
+
 lista1.mostrarTarea();
-
-
-
-
 
 
 
