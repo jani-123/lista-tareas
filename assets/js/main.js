@@ -72,28 +72,45 @@ function Listarea(title)
 
 function AddLIsts()
 {
+	
     this.mostrarTarea = function(){
     	var html = "";
         for (var i = 0 ; i < elementsLists.length ; i++){
 		 	var dato_1 = elementsLists[i];
-		    var e = "<div>" + "<p>" + "<input type='checkbox' name='datos' id='"+ i + "' />" +
-		            "<label for='"+i+"'>" + dato_1.title + "</label>" + "</p>" + "<div>" ;
-
+		 	if(dato_1.completed != false)
+		 	{
+		 	    var e = "<div class ='todo'>" + "<p>" + "<input type='checkbox' onclick='eliminar(this)' name='datos' id='"+ i + "' />" +
+		                "<label for='"+i+"'>" + "<del>" + dato_1.title + "</del>" + "</label>" + "</p>" + "<div>" ;
+		 	}
+		 	else
+		 	{
+		 		var e = "<div class ='todo'>" + "<p>" + "<input type='checkbox' onclick='eliminar(this)' name='datos' id='"+ i + "' />" +
+		                "<label for='"+i+"'>" + dato_1.title + "</label>" + "</p>" + "<div>" ;
+		 	}
 		 	html +=  e;
         }
         document.getElementById('listado').innerHTML = html;
-        
     }
+
+     
+     
 }
 
+function eliminar (e) {
+	console.log (e);
+	elementsLists[ parseInt (e.id) ].completed = true;
+
+	lista1.mostrarTarea();
+}
 function limpiar()
 {
 	document.getElementById('nuevaTarea').value= "";
 }
 
-var lista1 = new AddLIsts();
 
+var lista1 = new AddLIsts(); // INSTANCIA
 
+// butoon ADD
 var btnAdd = document.getElementById('add');
 btnAdd.onclick = function(){
 	var addTarea = document.getElementById("nuevaTarea").value;
@@ -103,14 +120,5 @@ btnAdd.onclick = function(){
     limpiar();
 };
 
+ 
 lista1.mostrarTarea();
-
-
-
-
-
-
-
-
-
-
